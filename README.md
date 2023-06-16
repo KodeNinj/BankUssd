@@ -9,7 +9,7 @@ This is script depict the USSD used to carry out basic bank's transaction. It's 
 - Ability to buy Mobile Data
 
 
-CONCEPTS TOUCHED IN THIS PROJECT
+## CONCEPTS TOUCHED IN THIS PROJECT
 - Basic output command using echo
 - Functions
 - if/elif
