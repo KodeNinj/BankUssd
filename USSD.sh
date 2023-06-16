@@ -54,32 +54,28 @@ function checkBalance(){
 #Transfer funds
 function transferFunds() {
 	
-	echo " ===================================================="
-	echo "           Enter Account Number                      "
+	echo "====================================================="
+	echo "          Enter Account Number (10 digits)           "
 	echo "====================================================="
 	read ACCOUNT_NO
 	length=${#ACCOUNT_NO}
 	if [ $length -eq 10 ];then 
-		echo " ===================================================="
+		echo "====================================================="
         	echo "             Choose Bank                             "
         	echo "====================================================="
 		echo "1. EcoBank\n2. Access Bank\n3. Polaris bank\n4. Jaiz bank\n0. Go Back Home\nAny other key to quit"
 		read Bank
 		BankName=""
 		Bank=$(($Bank))
-		if [ $Bank -eq 1 ];then
-			BankName="Ecobank"
-		elif [ $Bank -eq 2 ];then
-			BankName="Access  Bank"
-		elif [ $Bank -eq 3 ];then
-			BankName="Polaris Bank"
-		elif [ $Bank -eq 4 ];then
-			BankName="Jaiz Bank"
-		elif [ $Bank -eq 0 ];then
-			mainMenu
-		fi
+		case $Bank in
+			1) BankName="Ecobank";;
+			2) BankName="Access  Bank";;
+			3) BankName="Polaris Bank";;
+			4) BankName="Jaiz Bank";;
+			0) mainMenu;;
+		esac
 
-		echo " ===================================================="
+		echo "====================================================="
 		echo "             Enter Amount                            "
 		echo "====================================================="
 		read Amount
@@ -96,19 +92,19 @@ function transferFunds() {
 		read choice
 		choice=$(($choice))
 		if [ $choice -eq 1 ];then
-		balcheck=$(($Bal-$Amount))
-		if [ $balcheck -gt 0 ];then
-			echo "==================================="
-			echo "  Funds Transferred Successfully"
-			echo "==================================="
-			Bal=$(($Bal-$Amount))
-			checkBalance
-		else
-			echo "==================="
-			echo "Insufficient Funds"
-			echo "==================="
-			DoMore
-		fi
+			balcheck=$(($Bal-$Amount))
+			if [ $balcheck -gt 0 ];then
+				echo "==================================="
+				echo "  Funds Transferred Successfully"
+				echo "==================================="
+				Bal=$(($Bal-$Amount))
+				checkBalance
+			else
+				echo "==================="
+				echo "Insufficient Funds"
+				echo "==================="
+				DoMore
+			fi
 		elif [ $choice -eq 2 ];then
 		mainMenu
 		fi
@@ -216,7 +212,7 @@ function BuyAirtime(){
 		BuyAirtime;;
 		esac
 		echo "============================="
-		echo "Enter Mobile Number"
+		echo "Enter Mobile Number (11 digits)"
 		echo "============================="
 		read NUMBER
 		length=${#NUMBER}
